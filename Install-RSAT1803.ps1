@@ -4,9 +4,11 @@ $DLFile = 'C:\windows\temp\Rsat.msu'
 $WusaArg = $DLFile + " /quiet"
 Invoke-WebRequest -Uri $DLPath -OutFile $DLFile
 Start-Process -FilePath "C:\Windows\System32\wusa.exe" -ArgumentList $WusaArg -Wait
-#Clean up
+
+# Clean up
 Remove-Item -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\" -Recurse -Force
 Remove-Item -Path $DLFile
+
 # Create shortcut
 $TargetFile = "$env:SystemRoot\System32\mmc.exe"
 $ShortcutFile = "$env:Public\Desktop\Active Directory.lnk"
